@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title ?? site:name }}</title>
+    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+</head>
+<body class="bg-slate-100 font-sans leading-normal  dark:text-gray-400">
+{{ partial:navbar }}
+<main>
+    {{ template_content }}
+</main>
+{{ partial:footer }}
+</body>
+</html>

@@ -1,0 +1,29 @@
+<section class="bg-gray dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {{ card_grid }}
+            <div
+                class="overflow-hidden rounded-lg bg-white shadow-1 transition duration-300">
+
+                {{ card_icon }}
+                <img
+                    src="{{ url }}"
+                    alt="{{ alt ?? '' }}"
+                    class="h-48 mx-auto mt-4"
+                >
+                {{ /card_icon }}
+
+                <div class="p-6 text-center">
+                    <h3 class="mb-3 text-xl font-semibold text-dark dark:text-white mb-4">
+                        {{ card_title }}
+                    </h3>
+
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        {{ card_text }}
+                    </p>
+                </div>
+            </div>
+            {{ /card_grid }}
+        </div>
+    </div>
+</section>
