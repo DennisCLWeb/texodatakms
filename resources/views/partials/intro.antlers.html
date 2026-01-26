@@ -1,0 +1,50 @@
+<section class="mt-8">
+    <div class="relative h-[85vh] w-full">
+        {{ intro_image }}
+        <div class="absolute inset-0">
+            <img src="{{ url }}" alt="{{ alt ?? '' }}" class="object-cover w-full h-full">
+
+            <div class="absolute top-10 ml-100 flex gap-24">
+
+                <!-- LEFT -->
+                <div>
+                    <h1 class="text-white text-3xl lg:text-4xl font-bold mt-10">
+                        {{ intro_title }}
+                    </h1>
+
+                    <p class="text-white text-base font-medium mt-20 max-w-[560px]">
+                        {{ intro_subtitle }}
+                    </p>
+
+                    <div class="mt-12 space-y-2 ml-6">
+                        {{ grid_intro_attribute }}
+                        <div class="flex gap-2 text-white mt-3">
+                                <span class="font-semibold">
+                                    {{ intro_attribute_title }}
+                                </span>
+                            <span>
+                                    {{ intro_attribute_subtitle }}
+                                </span>
+                        </div>
+                        {{ /grid_intro_attribute }}
+                    </div>
+                </div>
+
+                <div class="max-w-[420px] mt-15 ml-8 px-2">
+                    {{ grid_intro_benefit }}
+                    <div class="text-white mb-36">
+                        <h3 class="font-semibold text-2xl">
+                            {{ intro_benefit_title }}
+                        </h3>
+                        <p class="text-sm mt-3">
+                            {{ intro_benefit_subtitle }}
+                        </p>
+                    </div>
+                    {{ /grid_intro_benefit }}
+                </div>
+
+            </div>
+        </div>
+        {{ /intro_image }}
+    </div>
+</section>

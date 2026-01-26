@@ -1,0 +1,7 @@
+<div class="relative h-[85vh] w-full">
+    {{ quality_image }}
+    <div class="absolute inset-0">
+        <img src="{{ url }}" alt="{{ alt ?? '' }}" class="object-cover w-full h-full">
+    </div>
+    {{ /quality_image }}
+</div>

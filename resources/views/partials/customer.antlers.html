@@ -1,0 +1,15 @@
+<section class="mt-16">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-6 gap-x-28">
+
+            {{ customer_grid }}
+            {{ customer_icon }}
+            <div class="flex items-center">
+                <img src="{{ url }}" alt="{{ alt ?? '' }}">
+            </div>
+            {{ /customer_icon }}
+            {{ /customer_grid }}
+
+        </div>
+    </div>
+</section>
