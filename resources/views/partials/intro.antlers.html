@@ -1,14 +1,13 @@
 <section class="mt-8">
-    <div class="relative h-[85vh] w-full">
+    <div class="relative md:h-[85vh] h-[160vh] w-full">
         {{ intro_image }}
         <div class="absolute inset-0">
             <img src="{{ url }}" alt="{{ alt ?? '' }}" class="object-cover w-full h-full">
 
-            <div class="absolute top-10 ml-100 flex gap-24">
+            <div class="absolute top-10 left-4 md:left-100 flex flex-col md:flex-row gap-24">
 
-                <!-- LEFT -->
                 <div>
-                    <h1 class="text-white text-3xl lg:text-4xl font-bold mt-10">
+                    <h1 class="text-white text-4xl font-bold mt-10">
                         {{ intro_title }}
                     </h1>
 
@@ -16,23 +15,23 @@
                         {{ intro_subtitle }}
                     </p>
 
-                    <div class="mt-12 space-y-2 ml-6">
+                    <div class="mt-12 space-y-2 md:ml-6 ml-0">
                         {{ grid_intro_attribute }}
                         <div class="flex gap-2 text-white mt-3">
-                                <span class="font-semibold">
-                                    {{ intro_attribute_title }}
-                                </span>
+                            <span class="font-semibold">
+                                {{ intro_attribute_title }}
+                            </span>
                             <span>
-                                    {{ intro_attribute_subtitle }}
-                                </span>
+                                {{ intro_attribute_subtitle }}
+                            </span>
                         </div>
                         {{ /grid_intro_attribute }}
                     </div>
                 </div>
 
-                <div class="max-w-[420px] mt-15 ml-8 px-2">
+                <div class="max-w-[420px] md:mt-15 mt-0 md:ml-8 ml-0 px-2">
                     {{ grid_intro_benefit }}
-                    <div class="text-white mb-36">
+                    <div class="text-white md:mb-36 mb-4">
                         <h3 class="font-semibold text-2xl">
                             {{ intro_benefit_title }}
                         </h3>
@@ -42,7 +41,6 @@
                     </div>
                     {{ /grid_intro_benefit }}
                 </div>
-
             </div>
         </div>
         {{ /intro_image }}
