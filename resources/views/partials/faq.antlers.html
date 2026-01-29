@@ -1,0 +1,33 @@
+<section class="mt-8"></section>
+
+{{ faq_card }}
+<div class="transition-all duration-200 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50">
+    <button type="button" class="faq-question flex items-center justify-between w-full px-4 py-5 sm:p-6" data-target="answer{{ id }}" data-arrow="arrow{{ id }}">
+        <span class="flex text-lg font-semibold text-black">{{ faq_question }}</span>
+        <svg id="arrow{{ id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+    <div id="answer{{ id }}" style="display:none" class="px-4 pb-5 sm:px-6 sm:pb-6">
+        <p>{{ faq_answer }}</p>
+    </div>
+</div>
+{{ /faq_card }}
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var answer = document.getElementById(button.dataset.target);
+            var arrow = document.getElementById(button.dataset.arrow);
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                answer.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+</script>
+
