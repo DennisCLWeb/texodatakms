@@ -19,14 +19,10 @@
         button.addEventListener('click', function() {
             var answer = document.getElementById(button.dataset.target);
             var arrow = document.getElementById(button.dataset.arrow);
+            var isOpen = answer.style.display === 'block';
 
-            if (answer.style.display === 'none' || answer.style.display === '') {
-                answer.style.display = 'block';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                answer.style.display = 'none';
-                arrow.style.transform = 'rotate(0deg)';
-            }
+            answer.style.display = isOpen ? 'none' : 'block';
+            arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
         });
     });
 </script>
