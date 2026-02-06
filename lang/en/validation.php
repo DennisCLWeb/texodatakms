@@ -7,6 +7,8 @@ return [
     'required' => ':attribute is verplicht.',
     'alpha' => ':attribute mag alleen letters bevatten.',
     'email' => ':attribute is ongeldig.',
+    'max.string' => ':attribute is te lang.',
+    'min.string' => ':attribute is te kort.',
 
     'attributes' => [
         'name' => 'Naam',
@@ -15,4 +17,3 @@ return [
         'message' => 'Bericht',
     ],
 ];
-

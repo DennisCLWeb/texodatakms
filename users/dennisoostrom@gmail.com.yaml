@@ -1,3 +1,5 @@
 super: true
 id: 84f42149-26ab-4a15-9397-36df3ae5188e
 password_hash: $2y$12$EeK6WkYfd1h4zobpdafGHe8pNY/W9ySpMh8QKxeCHZ8g2ZaIh.F0S
+preferences:
+  theme: light

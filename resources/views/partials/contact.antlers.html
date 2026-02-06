@@ -3,11 +3,11 @@
 
         <div class="mt-40">
             <h2 class="text-6xl font-teko text-gray-800 mb-6">
-                {{ about_us_title }}
+                {{ contact_title }}
             </h2>
 
             <div class="text-gray-600 space-y-4 text-xl">
-                {{ about_us_text }}
+                {{ contact_text }}
             </div>
         </div>
 
@@ -34,7 +34,6 @@
                 <input type="email" name="email" placeholder="Email" value="{{ old:email }}"  class="w-full border border-gray-300 px-4 py-3" required>
                 <textarea name="reason" rows="3" placeholder="Waarom neem jij contact met ons op?" class="w-full border border-gray-300 px-4 py-3" required>{{ old:reason }}</textarea>
                 <textarea name="message" rows="3" placeholder="Bericht" class="w-full border border-gray-300 px-4 py-3" required>{{ old:message }}</textarea>
-
                 <button type="submit" class="bg-gray-800 text-white px-6 py-3">Verzenden</button>
             </div>
 
