@@ -1,9 +1,9 @@
 <footer>
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    <div class="w-full mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
             </a>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-body sm:mb-0 divide-x">
+            <ul class="flex flex-wrap items-center mb-6 mr-6 text-sm font-medium text-body sm:mb-0 divide-x">
                 {{ nav:footer }}
                 <li class="px-2">
                     <a href="{{ url }}" class="hover:underline">
@@ -15,3 +15,10 @@
         </div>
     </div>
 </footer>
+
+<div class="w-full bg-gray-200 h-20 flex items-center">
+    <div class="text-left text-gray-700 px-4 text-sm ml-6">
+        {{ foot:foot_text }}
+    </div>
+</div>
+
