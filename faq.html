@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Texodata KMS | Kleding Management Systeem</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4099de;
+            --primary-dark: #297ec0;
+            --primary-10: rgba(64, 153, 222, .1);
+            --primary-30: rgba(64, 153, 222, .3);
+            --logo-bg: #252d37;
+            --gray-20: #f6fbff;
+            --gray-30: #f4f7fa;
+            --gray-40: #eef1f4;
+            --gray-50: #e3e7eb;
+            --gray-60: #bacad6;
+            --gray-80: #7c858e;
+            --gray-90: #3c4b5f;
+            --black: #22292f;
+            --white: #fff;
+            --success: #21b978;
+            --success-light: #c6f6d5;
+            --danger: #e74444;
+            --info: #03a9f4;
+            --info-light: #bee3f8;
+            --warning: #ffeb3b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+            color: var(--black);
+            background: var(--gray-20);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: var(--logo-bg);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,.15);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none;
+        }
+
+        .logo svg {
+            height: 36px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+
+        .header-badge {
+            background: var(--primary);
+            color: var(--white);
+            padding: .35rem 1rem;
+            border-radius: 20px;
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: .75rem;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: .9;
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 400;
+            position: relative;
+        }
+
+        /* ── Search ── */
+        .search-container {
+            max-width: 600px;
+            margin: -1.75rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.25rem 1rem 3rem;
+            border: 2px solid var(--gray-50);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,.08);
+            transition: border-color .2s, box-shadow .2s;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(64,153,222,.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 2.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-60);
+            pointer-events: none;
+        }
+
+        /* ── Navigation tabs ── */
+        .nav-tabs {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: .6rem 1.25rem;
+            border: 2px solid var(--gray-50);
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--gray-80);
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .nav-tab:hover {
+            border-color: var(--primary-30);
+            color: var(--primary);
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* ── Main content ── */
+        .main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* ── Section ── */
+        .faq-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid var(--gray-50);
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .section-icon.blue { background: var(--primary-10); color: var(--primary); }
+        .section-icon.green { background: var(--success-light); color: var(--success); }
+        .section-icon.red { background: rgba(231,68,68,.1); color: var(--danger); }
+        .section-icon.info { background: var(--info-light); color: var(--info); }
+        .section-icon.dark { background: rgba(60,75,95,.1); color: var(--gray-90); }
+
+        .section-header h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--gray-90);
+        }
+
+        .section-header .badge {
+            font-size: .7rem;
+            font-weight: 700;
+            padding: .2rem .6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .badge-distributor { background: rgba(64,153,222,.12); color: var(--primary-dark); }
+        .badge-manager { background: rgba(33,185,120,.12); color: #1a9460; }
+        .badge-wearer { background: rgba(139,92,246,.12); color: #7c3aed; }
+        .badge-all { background: rgba(60,75,95,.1); color: var(--gray-90); }
+
+        /* ── FAQ item (accordion) ── */
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--gray-50);
+            border-radius: 10px;
+            margin-bottom: .625rem;
+            overflow: hidden;
+            transition: box-shadow .2s, border-color .2s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-30);
+            box-shadow: 0 2px 8px rgba(64,153,222,.06);
+        }
+
+        .faq-item.open {
+            border-color: var(--primary-30);
+            box-shadow: 0 2px 12px rgba(64,153,222,.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--gray-90);
+            text-align: left;
+            transition: background .15s;
+        }
+
+        .faq-question:hover {
+            background: var(--gray-20);
+        }
+
+        .faq-question .chevron {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            color: var(--gray-60);
+            transition: transform .25s ease, color .2s;
+        }
+
+        .faq-item.open .faq-question .chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.25rem 1.25rem;
+            color: var(--gray-80);
+            font-size: .925rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer-inner p {
+            margin-bottom: .75rem;
+        }
+
+        .faq-answer-inner p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-inner ul,
+        .faq-answer-inner ol {
+            margin: .5rem 0 .75rem 1.25rem;
+        }
+
+        .faq-answer-inner li {
+            margin-bottom: .35rem;
+        }
+
+        .faq-answer-inner strong {
+            color: var(--gray-90);
+            font-weight: 700;
+        }
+
+        .highlight {
+            background: var(--primary-10);
+            border-left: 3px solid var(--primary);
+            padding: .75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: .75rem 0;
+            font-size: .9rem;
+        }
+
+        .highlight.green {
+            background: rgba(33,185,120,.08);
+            border-left-color: var(--success);
+        }
+
+        /* ── CTA section ── */
+        .cta-section {
+            background: var(--white);
+            border: 2px solid var(--gray-50);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gray-90);
+            margin-bottom: .5rem;
+        }
+
+        .cta-section p {
+            color: var(--gray-80);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: .8rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: .95rem;
+            transition: background .2s, transform .1s;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--logo-bg);
+            color: rgba(255,255,255,.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: .85rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero p { font-size: 1rem; }
+            .main { padding: 0 1rem 3rem; }
+            .header-inner { padding: 1rem 1.25rem; }
+            .search-container { padding: 0 1rem; }
+            .search-icon { left: 1.9rem; }
+            .nav-tabs { padding: 0 1rem; }
+            .nav-tab { padding: .5rem .9rem; font-size: .82rem; }
+            .faq-question { padding: 1rem; font-size: .9rem; }
+            .faq-answer-inner { padding: 0 1rem 1rem; }
+            .cta-section { padding: 2rem 1.5rem; }
+        }
+
+        /* ── No results ── */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--gray-80);
+            display: none;
+        }
+
+        .no-results svg {
+            width: 64px;
+            height: 64px;
+            color: var(--gray-60);
+            margin-bottom: 1rem;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 1045 609" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140.5 0H0v91h140.5c44.5 0 69 25 69 69v15H69v91h140.5v166c0 44-24.5 69-69 69H0v91h140.5c91 0 160-69 160-160V160c0-91-69-160-160-160z" fill="#fff"/>
+                <path d="M420 91V0H310v91h-50v91h50v260c0 91 69 160 160 160h50v-91h-50c-44.5 0-69-25-69-69V182h119V91H420z" fill="#fff"/>
+                <path d="M695 91C604 91 535 160 535 251v107c0 91 69 160 160 160s160-69 160-160V251c0-91-69-160-160-160zm69 267c0 44.5-24.5 69-69 69s-69-24.5-69-69V251c0-44.5 24.5-69 69-69s69 24.5 69 69v107z" fill="#fff"/>
+            </svg>
+            <span class="logo-text">Texodata KMS</span>
+        </a>
+        <span class="header-badge">Veelgestelde vragen</span>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Hoe kunnen we u helpen?</h1>
+    <p>Vind snel antwoorden over het Texodata Kleding Management Systeem &mdash; voor distributeurs, managers en medewerkers.</p>
+</section>
+
+<!-- Search -->
+<div class="search-container">
+    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input type="text" class="search-box" id="searchInput" placeholder="Zoek in de veelgestelde vragen..." autocomplete="off">
+</div>
+
+<!-- Filter tabs -->
+<div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" data-filter="all">Alle vragen</button>
+    <button class="nav-tab" data-filter="algemeen">Algemeen</button>
+    <button class="nav-tab" data-filter="distributeur">Distributeurs</button>
+    <button class="nav-tab" data-filter="manager">Managers</button>
+    <button class="nav-tab" data-filter="drager">Medewerkers</button>
+    <button class="nav-tab" data-filter="technisch">Technisch</button>
+</div>
+
+<!-- Main FAQ content -->
+<main class="main" id="faqMain">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: ALGEMEEN -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="algemeen">
+        <div class="section-header">
+            <div class="section-icon blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h2>Algemeen</h2>
+            <span class="badge badge-all">Alle gebruikers</span>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Wat is Texodata KMS?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Texodata KMS (Kleding Management Systeem) is een compleet B2B-platform voor het beheren en bestellen van bedrijfskleding en werkkleding. Het systeem verbindt <strong>leveranciers</strong>, <strong>distributeurs</strong>, <strong>klanten</strong> en hun <strong>medewerkers</strong> in &eacute;&eacute;n centraal platform.</p>
+                <p>Met Texodata KMS kunnen organisaties het volledige proces van bedrijfskleding digitaliseren: van productbeheer en webshops tot bestellingen, goedkeuringen en facturatie.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Voor wie is Texodata KMS bedoeld?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het platform bedient verschillende gebruikersgroepen:</p>
+                <ul>
+                    <li><strong>Distributeurs/Dealers</strong> &mdash; Beheren leveranciers, klanten en webshops</li>
+                    <li><strong>Klantmanagers</strong> &mdash; Beheren hun organisatie, locaties, afdelingen en medewerkers</li>
+                    <li><strong>Locatie- en afdelingsmanagers</strong> &mdash; Beheren teams en bestellingen binnen hun afdeling</li>
+                    <li><strong>Dragers/Medewerkers</strong> &mdash; Bestellen kleding via een persoonlijke webshop</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Welke voordelen biedt Texodata KMS voor mijn organisatie?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <ul>
+                    <li><strong>Tijdsbesparing</strong> &mdash; Geen handmatige bestellijsten meer; medewerkers bestellen zelf online</li>
+                    <li><strong>Kostenbeheer</strong> &mdash; Budgettering via een puntensysteem met volledige controle over uitgaven</li>
+                    <li><strong>Goedkeuringsworkflow</strong> &mdash; Managers keuren bestellingen goed voordat ze verwerkt worden</li>
+                    <li><strong>Uniforme uitstraling</strong> &mdash; Alleen goedgekeurde kleding per afdeling of functie beschikbaar</li>
+                    <li><strong>Inzicht</strong> &mdash; Real-time overzicht van bestellingen, budgetten en verbruik</li>
+                    <li><strong>Flexibiliteit</strong> &mdash; Elke klant krijgt een eigen webshop met eigen branding en productaanbod</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Hoe is de organisatiestructuur opgebouwd in het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Texodata KMS werkt met een hi&euml;rarchische structuur die uw organisatie weerspiegelt:</p>
+                <p><strong>Leverancier &rarr; Distributeur &rarr; Klant &rarr; Locatie &rarr; Afdeling &rarr; Functie &rarr; Drager</strong></p>
+                <p>Dit betekent dat producten en budgetten heel precies kunnen worden toegewezen. Een zorginstelling kan bijvoorbeeld per vestiging, per afdeling (chirurgie, radiologie) en per functie (arts, verpleegkundige) andere kleding beschikbaar stellen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>In welke talen is het systeem beschikbaar?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem is primair beschikbaar in het <strong>Nederlands</strong>. Daarnaast ondersteunt het platform meertalige productinformatie, zodat productbeschrijvingen in meerdere talen kunnen worden aangeboden. Klanten kunnen ook eigen terminologie instellen via het synoniemensysteem.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: WEBSHOPS & PRODUCTBEHEER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="distributeur">
+        <div class="section-header">
+            <div class="section-icon info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <h2>Webshops &amp; Productbeheer</h2>
+            <span class="badge badge-distributor">Distributeurs</span>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe maak ik een webshop aan voor een klant?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Elke klant kan een of meerdere webshops krijgen, elk met een eigen subdomein. Bij het aanmaken van een webshop configureert u:</p>
+                <ul>
+                    <li><strong>Branding</strong> &mdash; Eigen logo en huisstijlkleuren</li>
+                    <li><strong>Betaalmethoden</strong> &mdash; Punten, online betaling (Mollie) of factuur</li>
+                    <li><strong>Puntensysteem</strong> &mdash; Puntwaarde, ratio en of negatief saldo is toegestaan</li>
+                    <li><strong>Goedkeuringsworkflow</strong> &mdash; Of bestellingen van medewerkers goedgekeurd moeten worden</li>
+                    <li><strong>Verzendkosten</strong> &mdash; Regels voor verzendkosten en gratis verzending drempels</li>
+                    <li><strong>Productselectie</strong> &mdash; Welke producten met welke prijzen zichtbaar zijn</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Kan ik per webshop andere prijzen en producten instellen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja, volledig.</strong> Per webshop kunt u instellen:</p>
+                <ul>
+                    <li>Welke producten zichtbaar zijn</li>
+                    <li>Aangepaste prijzen (afwijkend van catalogusprijs)</li>
+                    <li>Specifieke kortingen per leverancier</li>
+                    <li>Eigen productafbeeldingen</li>
+                    <li>Voorkeurskleuren per shop</li>
+                    <li>Welke productvariaties (kleuren, maten) beschikbaar zijn</li>
+                </ul>
+                <div class="highlight green">Hierdoor kunt u voor elke klant een volledig op maat gemaakte webshop aanbieden, zonder meerdere systemen te hoeven beheren.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe werkt het importeren van producten van leveranciers?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem ondersteunt geautomatiseerde productimports vanuit leverancierssystemen, waaronder de <strong>PromiData API-koppeling</strong>. Hierbij worden automatisch:</p>
+                <ul>
+                    <li>Productgegevens (naam, beschrijving, SKU, EAN) gesynchroniseerd</li>
+                    <li>Variaties (kleuren, maten, materialen) aangemaakt</li>
+                    <li>Productafbeeldingen opgehaald en opgeslagen</li>
+                    <li>Prijsinformatie bijgewerkt</li>
+                </ul>
+                <p>Imports kunnen zowel handmatig worden gestart als ingepland als achtergrondtaak, zodat uw productcatalogus altijd up-to-date blijft.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Kan ik productaanpassingen aanbieden zoals borduurwerk en logo's?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Het systeem ondersteunt productmodificaties waarmee u extra diensten kunt aanbieden bovenop het basisproduct:</p>
+                <ul>
+                    <li><strong>Borduurwerk</strong> &mdash; Naam, logo of tekst laten borduren</li>
+                    <li><strong>Bedrukking</strong> &mdash; Logo's en prints toevoegen</li>
+                    <li><strong>Overige aanpassingen</strong> &mdash; Op maat configureerbaar per product</li>
+                </ul>
+                <p>Elke modificatie heeft een eigen prijs die automatisch bij de bestelling wordt opgeteld.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe beperk ik welke producten een medewerker mag bestellen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Producten kunnen op meerdere niveaus worden toegewezen:</p>
+                <ul>
+                    <li><strong>Per afdeling</strong> &mdash; Alle medewerkers van een afdeling zien dezelfde producten</li>
+                    <li><strong>Per functie</strong> &mdash; Artsen zien andere kleding dan verpleegkundigen</li>
+                    <li><strong>Per individuele drager</strong> &mdash; Specifieke productconfiguraties per persoon</li>
+                </ul>
+                <p>Dit zorgt ervoor dat elke medewerker alleen de kleding ziet die bij zijn of haar rol past, wat het bestelproces eenvoudig en overzichtelijk houdt.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Wat is het verschil tussen een beloningsshop en een factuurshop?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>U kunt per webshop kiezen tussen twee betaalmodellen:</p>
+                <ul>
+                    <li><strong>Beloningsshop (punten)</strong> &mdash; Medewerkers ontvangen een puntenbudget en betalen met punten. Ideaal voor organisaties die kledingkosten willen beheersen per medewerker. U bepaalt de puntwaarde, of negatief saldo is toegestaan, en of medewerkers zelf punten kunnen bijkopen.</li>
+                    <li><strong>Factuurshop</strong> &mdash; Alle bestellingen worden op factuur gezet aan het bedrijf. Medewerkers bestellen vrijuit (eventueel met goedkeuringsworkflow) en de kosten worden achteraf gefactureerd. Prijzen worden in euro's getoond.</li>
+                </ul>
+                <div class="highlight">Managers bestellen altijd op factuur, ongeacht het shoptype. Het puntenmodel geldt alleen voor medewerkers (dragers).</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe configureer ik verzendkosten en gratis verzending?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Verzendkosten worden per webshop ingesteld:</p>
+                <ol>
+                    <li>Maak een kostenregel aan met <strong>naam</strong>, <strong>SKU</strong> en <strong>prijs</strong></li>
+                    <li>Stel optioneel een <strong>gratis-verzending-drempel</strong> in (bijv. gratis vanaf &euro;50)</li>
+                    <li>Voeg de kostenregel toe aan de gewenste webshop(s)</li>
+                </ol>
+                <p>U kunt meerdere kosten per webshop instellen (bijv. verzendkosten + administratiekosten). Elke kost wordt apart weergegeven in de winkelwagen en bij het afrekenen. Het BTW-tarief op verzendkosten volgt automatisch het hoogste BTW-tarief van de producten in de bestelling.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Kan ik de naam van het puntensysteem aanpassen per webshop?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja, volledig.</strong> Per webshop kunt u instellen:</p>
+                <ul>
+                    <li><strong>Enkelvoud</strong> &mdash; bijv. "punt", "credit", "ster"</li>
+                    <li><strong>Meervoud</strong> &mdash; bijv. "punten", "credits", "sterren"</li>
+                    <li><strong>Positie</strong> &mdash; Of de naam voor of na het aantal komt ("500 punten" vs "punten 500")</li>
+                    <li><strong>Decimaalteken</strong> &mdash; Komma of punt als scheidingsteken</li>
+                    <li><strong>Duizendtallen</strong> &mdash; Punt of komma als duizendtalscheidingsteken</li>
+                </ul>
+                <p>Zo past het puntensysteem naadloos bij de terminologie van uw klant.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe werkt het kortingssysteem voor webshopproducten?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Bij het toevoegen van producten aan een webshop kunt u de prijs op twee manieren aanpassen:</p>
+                <ul>
+                    <li><strong>Kortingspercentage instellen</strong> &mdash; Het systeem berekent automatisch de webshopprijs: catalogusprijs minus het kortingspercentage</li>
+                    <li><strong>Vaste webshopprijs instellen</strong> &mdash; Het systeem berekent automatisch het bijbehorende kortingspercentage</li>
+                </ul>
+                <p>U kunt ook <strong>bulk-kortingen</strong> toepassen: selecteer meerdere producten en stel in &eacute;&eacute;n keer hetzelfde kortingspercentage in. De prijzen worden automatisch herberekend voor alle variaties.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Welke verzendadres-opties kan ik per webshop configureren?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>U kunt per webshop apart instellen welke afleveradressen beschikbaar zijn voor <strong>managers</strong> en <strong>medewerkers</strong>:</p>
+                <p><strong>Voor managers:</strong></p>
+                <ul>
+                    <li>Klantadres</li>
+                    <li>Locatieadres</li>
+                    <li>Afdelingsadres</li>
+                    <li>Alle locaties (keuzelijst)</li>
+                    <li>Alle afdelingen (keuzelijst)</li>
+                </ul>
+                <p><strong>Voor medewerkers:</strong></p>
+                <ul>
+                    <li>Eigen adres van de medewerker</li>
+                    <li>Klantadres</li>
+                    <li>Locatieadres</li>
+                    <li>Afdelingsadres</li>
+                </ul>
+                <p>Zo bepaalt u precies of kleding naar het bedrijfsadres, de vestiging of het thuisadres van de medewerker wordt gestuurd.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe werken productvariaties (maten, kleuren, materialen)?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Producten kennen drie typen in het systeem:</p>
+                <ul>
+                    <li><strong>Zelfstandig product</strong> &mdash; Een product zonder variaties (bijv. een accessoire in &eacute;&eacute;n uitvoering)</li>
+                    <li><strong>Configureerbaar product (ouder)</strong> &mdash; Een hoofdproduct met onderliggende variaties</li>
+                    <li><strong>Variatie (kind)</strong> &mdash; Een specifieke combinatie van materiaal, kleur en maat</li>
+                </ul>
+                <p>Bij configureerbare producten erven alle variaties automatisch de korting en prijs van het ouderproduct. U kunt per webshop ook beperken welke <strong>kleuren</strong> en <strong>materialen</strong> beschikbaar zijn, en een <strong>voorkeurskleur</strong> of <strong>voorkeursmateriaal</strong> instellen dat standaard wordt geselecteerd.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe werkt de dagelijkse automatische productimport?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem voert dagelijks automatisch productimports uit vanuit gekoppelde leverancierssystemen (zoals PromiData). Hierbij kunt u kiezen uit drie importmodi:</p>
+                <ul>
+                    <li><strong>Alleen nieuwe producten</strong> &mdash; Bestaande producten worden overgeslagen</li>
+                    <li><strong>Alles overschrijven</strong> &mdash; Alle productdata wordt ververst, inclusief bestaande producten</li>
+                    <li><strong>Alleen wijzigingen</strong> &mdash; Prijzen, beschrijvingen en afbeeldingen worden bijgewerkt bij bestaande producten; nieuwe producten worden toegevoegd</li>
+                </ul>
+                <p>Bij elke import worden automatisch bijgewerkt: <strong>prijzen</strong>, <strong>BTW-klasse</strong>, <strong>afbeeldingen</strong>, <strong>merknaam</strong>, <strong>SKU/EAN-codes</strong>, <strong>namen en beschrijvingen</strong> (meertalig), en alle <strong>variaties</strong> (kleur, maat, materiaal).</p>
+                <div class="highlight">Alle imports worden gelogd in de importhistorie. U kunt de status volgen: wachtend, bezig, voltooid of mislukt.</div>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: KLANTBEHEER & ORGANISATIE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="manager">
+        <div class="section-header">
+            <div class="section-icon green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h2>Klantbeheer &amp; Organisatie</h2>
+            <span class="badge badge-manager">Managers</span>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe voeg ik medewerkers (dragers) toe aan het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Er zijn twee manieren om medewerkers toe te voegen:</p>
+                <ul>
+                    <li><strong>Individueel</strong> &mdash; Voeg dragers &eacute;&eacute;n voor &eacute;&eacute;n toe via het beheerpaneel met naam, e-mail, afdeling en functie</li>
+                    <li><strong>Bulk import via Excel</strong> &mdash; Upload een Excel-bestand met alle medewerkergegevens in &eacute;&eacute;n keer. Ideaal bij de eerste opzet of bij grote organisaties</li>
+                </ul>
+                <p>Elke drager ontvangt automatisch een uitnodiging om een account aan te maken en kan daarna direct inloggen in de webshop.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe werkt de goedkeuringsworkflow voor bestellingen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Wanneer de goedkeuringsworkflow is ingeschakeld voor een webshop, doorloopt elke bestelling van een medewerker de volgende stappen:</p>
+                <ol>
+                    <li>Medewerker plaatst een bestelling in de webshop</li>
+                    <li>De bestelling krijgt de status <strong>"Wacht op goedkeuring"</strong></li>
+                    <li>De verantwoordelijke manager ontvangt een melding</li>
+                    <li>De manager kan de bestelling <strong>goedkeuren</strong> of <strong>afwijzen</strong></li>
+                    <li>Na goedkeuring wordt de bestelling verwerkt</li>
+                </ol>
+                <div class="highlight">Dit geeft u als manager volledige controle over de kledinguitgaven van uw team, zonder het bestelgemak voor medewerkers te beperken.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Kan ik bestellen namens mijn medewerkers?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Als manager kunt u in de webshop een specifieke medewerker selecteren en namens hem of haar een bestelling plaatsen. U ziet dan automatisch de producten die voor die medewerker beschikbaar zijn op basis van afdeling en functie.</p>
+                <p>Dit is handig wanneer een medewerker zelf geen toegang heeft tot een computer, of wanneer u centraal bestellingen wilt coördineren.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe beheer ik locaties, afdelingen en functies?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>In het beheerpaneel kunt u uw volledige organisatiestructuur opbouwen:</p>
+                <ul>
+                    <li><strong>Locaties</strong> &mdash; Vestigingen of filialen van uw organisatie (bijv. "Hoofdkantoor Amsterdam", "Filiaal Rotterdam")</li>
+                    <li><strong>Afdelingen</strong> &mdash; Teams binnen een locatie (bijv. "Chirurgie", "Receptie", "Magazijn")</li>
+                    <li><strong>Functies</strong> &mdash; Rollen binnen afdelingen (bijv. "Arts", "Verpleegkundige", "Assistent")</li>
+                </ul>
+                <p>Elke medewerker wordt gekoppeld aan een locatie, afdeling en functie. Op basis hiervan worden automatisch de juiste producten, prijzen en budgetten toegewezen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Kan ik eigen terminologie gebruiken in het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Via het synoniemensysteem kunt u standaard benamingen aanpassen naar de terminologie van uw organisatie. Zo kunt u bijvoorbeeld "Dragers" hernoemen naar "Medewerkers", "Locaties" naar "Vestigingen" of "Afdelingen" naar "Teams".</p>
+                <p>Dit maakt het systeem herkenbaar en intuïtief voor al uw gebruikers.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe werkt de Excel-import van medewerkers precies?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De bulk-import van medewerkers werkt als volgt:</p>
+                <ol>
+                    <li>Download het <strong>Excel-sjabloon</strong> ("Sjabloon medewerkers") vanuit de importhistorie</li>
+                    <li>Vul het sjabloon in met medewerkergegevens (naam, e-mail, adres, etc.)</li>
+                    <li>Klik op <strong>"Importeer medewerkers"</strong> in het beheerpaneel</li>
+                    <li>Selecteer de <strong>klant</strong>, <strong>locatie</strong> en optioneel <strong>afdeling</strong> en <strong>functie</strong></li>
+                    <li>Upload het bestand</li>
+                </ol>
+                <p>De import wordt op de achtergrond verwerkt. U kunt de voortgang realtime volgen in de <strong>importhistorie</strong> met automatische verversing. Per import ziet u de status (wachtend, bezig, voltooid, mislukt), het aantal records en eventuele foutmeldingen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Kan ik medewerkers in bulk punten toekennen of aanpassen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> U kunt punten op meerdere manieren in bulk beheren:</p>
+                <ul>
+                    <li><strong>Per individuele medewerker</strong> &mdash; Bewerk het puntentegoed in het medewerkerprofiel</li>
+                    <li><strong>Per selectie</strong> &mdash; Selecteer meerdere medewerkers, afdelingen of locaties en gebruik de actie "Punten aanpassen"</li>
+                </ul>
+                <p>Bij elke puntenwijziging kunt u kiezen uit: <strong>punten toevoegen</strong>, <strong>punten aftrekken</strong>, of <strong>punten resetten</strong> naar een specifiek bedrag. U moet altijd een <strong>beschrijving</strong> opgeven die in de puntenhistorie van de medewerker verschijnt.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Welke e-mailnotificaties worden automatisch verstuurd?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem verstuurt automatisch e-mails bij de volgende gebeurtenissen:</p>
+                <ul>
+                    <li><strong>Nieuwe bestelling</strong> &mdash; Bevestiging naar de besteller, melding naar de verantwoordelijke manager(s) en de distributeur</li>
+                    <li><strong>Bestelling bijgewerkt</strong> &mdash; Notificatie naar besteller, manager en distributeur bij statuswijzigingen</li>
+                    <li><strong>Bestelling geannuleerd</strong> &mdash; Melding naar besteller en manager. Bij medewerkers worden punten automatisch teruggestort</li>
+                    <li><strong>Nieuw account</strong> &mdash; Inloggegevens en wachtwoord-reset link wanneer een medewerker wordt aangemaakt</li>
+                    <li><strong>Leveranciersbestelling</strong> &mdash; Orderbevestiging naar leveranciers wanneer bestellijsten worden aangemaakt</li>
+                    <li><strong>Facturen en offertes</strong> &mdash; PDF-bijlagen per e-mail naar klanten</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Wie kan bestellingen goedkeuren en hoe werkt de hi&euml;rarchie?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De goedkeuringshi&euml;rarchie is afhankelijk van de webshopinstellingen:</p>
+                <ul>
+                    <li><strong>Klantmanager</strong> &mdash; Kan bestellingen goedkeuren voor de gehele klantorganisatie</li>
+                    <li><strong>Multi-locatiemanager</strong> &mdash; Kan goedkeuren voor meerdere vestigingen</li>
+                    <li><strong>Locatiemanager</strong> &mdash; Kan goedkeuren voor zijn/haar vestiging</li>
+                    <li><strong>Multi-afdelingsmanager</strong> &mdash; Kan goedkeuren voor meerdere afdelingen</li>
+                    <li><strong>Afdelingsmanager</strong> &mdash; Kan goedkeuren voor zijn/haar afdeling</li>
+                </ul>
+                <p>Per webshop kunt u instellen:</p>
+                <ul>
+                    <li>Of <strong>medewerkersbestellingen</strong> goedkeuring vereisen</li>
+                    <li>Of <strong>managersbestellingen</strong> goedkeuring vereisen (bijv. locatiemanagers moeten goedkeuring krijgen van de klantmanager)</li>
+                    <li>Of goedkeurings-e-mails naar <strong>locatiemanagers</strong> en/of <strong>klantmanagers</strong> worden gestuurd</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe bekijk ik de bestelhistorie en puntenoverzichten van een medewerker?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>In het beheerpaneel kunt u per medewerker uitgebreide informatie inzien:</p>
+                <ul>
+                    <li><strong>Bestelhistorie</strong> &mdash; Alle bestelde artikelen met SKU, productnaam, kleur, maat, aantal, prijs en datum</li>
+                    <li><strong>Puntenhistorie</strong> &mdash; Elke puntenmutatie met beschrijving, bedrag, lopend saldo en datum</li>
+                    <li><strong>Maatregistratie</strong> &mdash; Opgeslagen maatvoorkeuren per product</li>
+                    <li><strong>Notificaties</strong> &mdash; Accountgerelateerde meldingen</li>
+                </ul>
+                <p>De bestelhistorie is doorzoekbaar en filterbaar, zodat u snel specifieke bestellingen kunt terugvinden.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: BESTELLEN & BETALEN -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="drager">
+        <div class="section-header">
+            <div class="section-icon green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <h2>Bestellen &amp; Betalen</h2>
+            <span class="badge badge-wearer">Medewerkers</span>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe bestel ik kleding via de webshop?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Bestellen gaat eenvoudig in een paar stappen:</p>
+                <ol>
+                    <li>Log in op uw persoonlijke webshop</li>
+                    <li>Blader door de beschikbare producten of gebruik de filters (categorie, kleur, materiaal)</li>
+                    <li>Selecteer de gewenste kleur en maat</li>
+                    <li>Voeg het product toe aan uw winkelwagen</li>
+                    <li>Ga naar de checkout, controleer uw bestelling en kies een afleveradres</li>
+                    <li>Betaal met punten, online of op factuur (afhankelijk van uw organisatie)</li>
+                </ol>
+                <p>Na het plaatsen ontvangt u een bevestiging en kunt u de status van uw bestelling volgen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Wat is het puntensysteem en hoe werkt het?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het puntensysteem is een kledingbudget in puntvorm. Zo werkt het:</p>
+                <ul>
+                    <li>Uw organisatie kent u een <strong>puntentegoed</strong> toe (bijv. 500 punten per jaar)</li>
+                    <li>Elk product heeft een <strong>prijs in punten</strong> (de verhouding wordt door uw organisatie bepaald)</li>
+                    <li>Bij het bestellen worden punten van uw saldo afgeschreven</li>
+                    <li>U kunt uw <strong>puntenhistorie</strong> en huidig saldo altijd inzien</li>
+                </ul>
+                <div class="highlight green">Afhankelijk van de instellingen van uw organisatie kunt u ook extra punten bijkopen via een online betaling (Mollie).</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Welke betaalmethoden zijn beschikbaar?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Afhankelijk van de configuratie van uw webshop zijn de volgende betaalmethoden beschikbaar:</p>
+                <ul>
+                    <li><strong>Punten</strong> &mdash; Betaal met uw toegekende puntentegoed</li>
+                    <li><strong>Online betaling (Mollie)</strong> &mdash; Betaal met iDEAL, creditcard en andere online betaalmethoden</li>
+                    <li><strong>Op factuur</strong> &mdash; Beschikbaar voor managers, de kosten worden achteraf gefactureerd</li>
+                </ul>
+                <p>Uw organisatie bepaalt welke methoden voor u beschikbaar zijn.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Kan ik mijn bestelling volgen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Na het inloggen vindt u onder "Mijn bestellingen" een overzicht van al uw bestellingen met de huidige status. U kunt zien of uw bestelling wacht op goedkeuring, in verwerking is of is verzonden.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Wat als ik niet genoeg punten heb?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Dit hangt af van de instellingen van uw organisatie:</p>
+                <ul>
+                    <li><strong>Negatief saldo toegestaan</strong> &mdash; In sommige gevallen mag u punten "lenen" en een negatief saldo opbouwen. Dit wordt dan later verrekend.</li>
+                    <li><strong>Extra punten bijkopen</strong> &mdash; Als uw organisatie dit heeft ingeschakeld, kunt u via de "Punten kopen" pagina extra punten bijkopen met een online betaling.</li>
+                    <li><strong>Geen van beide</strong> &mdash; Neem contact op met uw manager om uw puntentegoed aan te vullen.</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe wijzig ik mijn wachtwoord of accountgegevens?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Ga in de webshop naar uw <strong>profiel</strong> (rechtsboven). Daar kunt u:</p>
+                <ul>
+                    <li>Uw wachtwoord wijzigen</li>
+                    <li>Afleveradressen beheren (toevoegen, bewerken, verwijderen)</li>
+                    <li>Uw profielgegevens bekijken</li>
+                </ul>
+                <p>Bent u uw wachtwoord vergeten? Gebruik de <strong>"Wachtwoord vergeten"</strong> functie op de inlogpagina om een nieuw wachtwoord in te stellen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe werken productvoorkeuren (voorkeur maat, kleur, materiaal)?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem onthoudt uw voorkeuren per product. Wanneer u een product opent, ziet u hints onder de keuzemenu's, zoals <strong>"Voorkeur maat: L"</strong> of <strong>"Voorkeur kleur: Wit"</strong>.</p>
+                <ul>
+                    <li>Als uw voorkeursoptie beschikbaar is, wordt deze <strong>automatisch geselecteerd</strong></li>
+                    <li>Als uw voorkeur niet beschikbaar is voor de gekozen combinatie (bijv. uw voorkeurskleur bestaat niet in het geselecteerde materiaal), kunt u zelf een alternatief kiezen</li>
+                    <li>Voorkeuren worden ingesteld door uw organisatie of opgebouwd op basis van eerdere bestellingen</li>
+                </ul>
+                <p>Dit maakt herhaaldelijk bestellen sneller: uw favoriete maat, kleur en materiaal zijn al vooringevuld.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe selecteer ik materiaal, kleur en maat op de productpagina?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De selectie werkt stap voor stap (afhankelijk van het product):</p>
+                <ol>
+                    <li><strong>Materiaal</strong> &mdash; Kies eerst een materiaal (als het product meerdere materialen heeft). Bij &eacute;&eacute;n materiaal wordt dit automatisch geselecteerd</li>
+                    <li><strong>Kleur</strong> &mdash; Na het kiezen van materiaal worden de beschikbare kleuren getoond. De productafbeelding past zich automatisch aan</li>
+                    <li><strong>Maat</strong> &mdash; Na het kiezen van kleur verschijnen de beschikbare maten. Maten worden logisch gesorteerd: XS, S, M, L, XL, XXL, 3XL etc.</li>
+                </ol>
+                <p>Elk keuzemenu wordt pas actief als de vorige keuze is gemaakt. Zo weet u altijd zeker dat de combinatie beschikbaar is.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Blijft mijn winkelwagen bewaard als ik uitlog of mijn browser sluit?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Uw winkelwagen wordt opgeslagen in het systeem en is gekoppeld aan uw account. Dit betekent:</p>
+                <ul>
+                    <li>De winkelwagen blijft bewaard als u uitlogt en later weer inlogt</li>
+                    <li>Als u uw browser sluit, zijn de producten er nog steeds bij uw volgende sessie</li>
+                    <li>Als u op een ander apparaat inlogt, ziet u dezelfde winkelwagen</li>
+                </ul>
+                <p>U kunt dus rustig producten verzamelen en later afrekenen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Kan ik opmerkingen toevoegen aan mijn bestelling?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja, op twee niveaus:</strong></p>
+                <ul>
+                    <li><strong>Per product</strong> &mdash; Bij het toevoegen aan de winkelwagen kunt u een opmerking plaatsen bij "Eventuele bijzonderheden" (bijv. speciale maatvoering of aanpassing). Deze opmerking blijft bewaard en is bewerkbaar in de winkelwagen.</li>
+                    <li><strong>Per bestelling</strong> &mdash; Tijdens het afrekenen kunt u een algemene opmerking over de gehele bestelling plaatsen (bijv. gewenste leveringsdatum of bezorginstructies).</li>
+                </ul>
+                <p>Daarnaast kunt u in uw profiel een <strong>vaste opmerking</strong> instellen die automatisch aan al uw toekomstige bestellingen wordt toegevoegd.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe koop ik extra punten bij en wat kost dat?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Als uw organisatie het bijkopen van punten heeft ingeschakeld:</p>
+                <ol>
+                    <li>Klik op het <strong>punten-icoontje</strong> in de header (het muntstuk)</li>
+                    <li>Kies <strong>"Punten bijkopen"</strong></li>
+                    <li>Vul het gewenste <strong>aantal punten</strong> in</li>
+                    <li>U ziet direct de <strong>kosten in euro's</strong> (inclusief 21% BTW)</li>
+                    <li>Klik op <strong>"Betalen"</strong> en u wordt doorgestuurd naar de betaalpagina</li>
+                    <li>Na succesvolle betaling worden de punten <strong>direct aan uw saldo toegevoegd</strong></li>
+                </ol>
+                <p>De betaling verloopt veilig via Mollie (iDEAL, creditcard, etc.). De kosten per punt worden bepaald door de puntratio die uw organisatie heeft ingesteld.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Wat zie ik allemaal op de productdetailpagina?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De productdetailpagina toont uitgebreide informatie:</p>
+                <ul>
+                    <li><strong>Productafbeelding</strong> &mdash; Wisselt automatisch bij een andere kleur- of materiaalkeuze</li>
+                    <li><strong>Merknaam</strong></li>
+                    <li><strong>Keuzevelden</strong> &mdash; Materiaal, kleur en maat (met voorkeursaanduiding)</li>
+                    <li><strong>Aantal</strong> &mdash; Instelbaar met minimale bestelhoeveelheid</li>
+                    <li><strong>Prijs</strong> &mdash; In punten of euro's, afhankelijk van uw shoptype</li>
+                    <li><strong>Productbeschrijving</strong> &mdash; Uitgebreide informatie over het product</li>
+                    <li><strong>Specificaties</strong> &mdash; Merk, materiaal, kleur, beschikbare maten</li>
+                    <li><strong>Verkoopinformatie</strong> &mdash; Prijs, besteleenheid, minimale bestelhoeveelheid</li>
+                    <li><strong>BTW-informatie</strong> &mdash; Prijs exclusief BTW, BTW-bedrag en -tarief</li>
+                    <li><strong>Identificatie</strong> &mdash; SKU-nummer, leveranciers-SKU en EAN-code</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Wat gebeurt er als mijn bestelling wordt geannuleerd?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Wanneer een bestelling wordt geannuleerd:</p>
+                <ul>
+                    <li>U ontvangt een <strong>e-mail</strong> met de bevestiging van de annulering</li>
+                    <li>Uw <strong>manager</strong> wordt eveneens per e-mail ge&iuml;nformeerd</li>
+                    <li>Als u met <strong>punten</strong> heeft betaald, worden deze <strong>automatisch teruggestort</strong> op uw saldo</li>
+                    <li>De bestelling krijgt de status <strong>"Geannuleerd"</strong> in uw bestelhistorie</li>
+                </ul>
+                <div class="highlight green">Punten worden altijd automatisch teruggestort bij annulering. U hoeft hiervoor geen actie te ondernemen.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Kan ik mijn e-mailadres wijzigen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Ga naar uw profiel via <strong>"Gegevens wijzigen"</strong> in het gebruikersmenu. Hier kunt u uw e-mailadres aanpassen. U moet het nieuwe e-mailadres <strong>twee keer invoeren</strong> ter bevestiging. Het nieuwe adres wordt direct gebruikt voor inloggen en het ontvangen van bestelbevestigingen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Kan ik op meerdere webshops inloggen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Als u toegang heeft tot meerdere webshops, verschijnt er rechtsboven een <strong>keuzelijst</strong> waarmee u eenvoudig kunt wisselen tussen webshops. Elke webshop kan andere producten, prijzen en instellingen hebben.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Hoe kies ik een afleveradres tijdens het afrekenen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Tijdens de checkout kunt u kiezen uit:</p>
+                <ul>
+                    <li><strong>Bestaande adressen</strong> &mdash; Selecteer een opgeslagen adres (uw eigen adres, bedrijfsadres of locatieadres, afhankelijk van de instellingen)</li>
+                    <li><strong>Nieuw adres</strong> &mdash; Klik op "Op nieuw adres" om eenmalig een ander afleveradres in te voeren met naam, straat, postcode, stad en land</li>
+                </ul>
+                <p>Welke adressen beschikbaar zijn, wordt door uw organisatie bepaald. Sommige organisaties staan alleen levering op het bedrijfsadres toe, terwijl andere ook thuisbezorging mogelijk maken.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="drager">
+            <button class="faq-question">
+                <span>Ontvang ik een bevestiging na het plaatsen van mijn bestelling?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Na het plaatsen van uw bestelling:</p>
+                <ul>
+                    <li>U ziet direct een <strong>bevestigingspagina</strong> met uw bestelnummer, alle bestelde producten, prijzen en eventuele opmerkingen</li>
+                    <li>U ontvangt een <strong>bevestigings-e-mail</strong> op uw geregistreerde e-mailadres met dezelfde informatie</li>
+                    <li>De bevestiging toont ook de <strong>betalingsstatus</strong> ("Betaling voltooid" of "Wacht op betaling")</li>
+                    <li>Contactgegevens van de <strong>klantenservice</strong> worden weergegeven voor eventuele vragen</li>
+                </ul>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: ORDERS & FACTURATIE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="distributeur">
+        <div class="section-header">
+            <div class="section-icon dark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h2>Orderverwerking &amp; Facturatie</h2>
+            <span class="badge badge-distributor">Distributeurs</span>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe verwerk ik binnengekomen bestellingen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Bestellingen doorlopen een gestructureerd proces:</p>
+                <ol>
+                    <li><strong>Bestelling binnenkomst</strong> &mdash; Orders worden automatisch gesplitst per leverancier</li>
+                    <li><strong>Pickorder aanmaken</strong> &mdash; Maak verzamelorders aan voor het magazijn</li>
+                    <li><strong>Verwerking</strong> &mdash; Volg de status van verwerking tot verzending</li>
+                    <li><strong>Facturatie</strong> &mdash; Genereer automatisch facturen vanuit afgeronde pickorders</li>
+                </ol>
+                <p>Het systeem houdt een complete orderhistorie bij met opmerkingen, statuswijzigingen en koppelingen naar facturen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe werkt de facturatie?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het facturatiesysteem biedt:</p>
+                <ul>
+                    <li><strong>Automatische factuurgeneratie</strong> vanuit afgeronde pickorders</li>
+                    <li><strong>PDF-facturen</strong> met uw eigen logo en bedrijfsgegevens</li>
+                    <li><strong>BTW-afhandeling</strong> &mdash; Automatische berekening van hoog, laag en nultarief</li>
+                    <li><strong>BTW-verlaging (VAT shifting)</strong> voor B2B-transacties binnen de EU, met automatische validatie via het VIES-systeem</li>
+                    <li><strong>Factuurnummering</strong> &mdash; Automatische, opeenvolgende nummering in een instelbaar formaat</li>
+                    <li><strong>E-mail verzending</strong> &mdash; Facturen direct per e-mail versturen</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Kan ik offertes maken in het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Het offertesysteem stelt u in staat om professionele offertes te genereren als PDF, compleet met uw bedrijfsbranding. Deze kunt u direct per e-mail naar klanten versturen vanuit het systeem.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Welke export-opties zijn beschikbaar voor mijn boekhouding?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem biedt koppelingen met populaire boekhoudsoftware:</p>
+                <ul>
+                    <li><strong>Exact Online</strong> &mdash; Exporteer orders en facturen direct naar uw Exact Online administratie</li>
+                    <li><strong>Wex</strong> &mdash; Orderexport naar Wex voor verdere verwerking</li>
+                    <li><strong>DGE Sync</strong> &mdash; Synchronisatie met DGE ERP-systemen</li>
+                </ul>
+                <p>Alle exports worden bijgehouden in een exporthistorie, zodat u altijd kunt terugzien wat er is verstuurd.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Welke orderstatussen zijn er en wat betekenen ze?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Een bestelling doorloopt de volgende statussen:</p>
+                <ol>
+                    <li><strong>Wacht op betaling</strong> &mdash; Bestelling aangemaakt, betaling nog niet ontvangen</li>
+                    <li><strong>Betaald</strong> &mdash; Betaling ontvangen (punten afgeschreven, online betaald of op factuur)</li>
+                    <li><strong>Ontvangen</strong> &mdash; Door de distributeur ontvangen, wacht op verwerking</li>
+                    <li><strong>In verwerking</strong> &mdash; Bestelling wordt klaargezet</li>
+                    <li><strong>Verzonden</strong> &mdash; Bestelling is onderweg</li>
+                    <li><strong>Voltooid</strong> &mdash; Bestelling is afgerond</li>
+                    <li><strong>Geannuleerd</strong> &mdash; Bestelling is geannuleerd (definitief)</li>
+                </ol>
+                <p>Daarnaast hebben bestellingen een <strong>goedkeuringsstatus</strong>: niet vereist, wacht op goedkeuring, goedgekeurd of afgewezen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Wat zijn pickorders (pakbonnen) en hoe maak ik ze aan?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Een pickorder (pakbon) is een document voor het magazijn dat aangeeft welke producten verzameld en verpakt moeten worden:</p>
+                <ol>
+                    <li>Selecteer &eacute;&eacute;n of meerdere bestellingen in het ordersoverzicht</li>
+                    <li>Kies <strong>"Pakbonnen aanmaken"</strong></li>
+                    <li>Het systeem groepeert items per klant en controleert de voorraad</li>
+                    <li>Pickorders worden aangemaakt met aflever- en factuuradres, alle artikelen inclusief modificaties (borduurwerk, bedrukking)</li>
+                </ol>
+                <p>Pickorders kunnen als <strong>PDF</strong> worden gedownload en bevatten alle informatie die het magazijn nodig heeft: productnaam, kleur, maat, materiaal, aantal, opmerkingen en eventuele aanpassingen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Kan ik bestellingen handmatig aanmaken in het beheerpaneel?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> In het beheerpaneel kunt u handmatig bestellingen aanmaken met de volgende opties:</p>
+                <ul>
+                    <li><strong>Algemeen</strong> &mdash; Klant, besteller, status, ordertype (bestelling of offerte), opmerkingen</li>
+                    <li><strong>Adressen</strong> &mdash; Aflever- en factuuradres</li>
+                    <li><strong>Artikelen</strong> &mdash; Producten toevoegen met hoeveelheden, prijzen en modificaties</li>
+                    <li><strong>Kosten</strong> &mdash; Verzend- en administratiekosten toevoegen</li>
+                </ul>
+                <p>Het systeem berekent automatisch de BTW op basis van de productklassen en klant-BTW-instellingen. U kunt ook kiezen of het een bestelling of een <strong>offerte</strong> betreft.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe worden bestellingen gesplitst per leverancier?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Wanneer u een <strong>bestellijst</strong> aanmaakt vanuit geselecteerde orders:</p>
+                <ol>
+                    <li>Het systeem groepeert alle bestelde producten automatisch <strong>per leverancier</strong></li>
+                    <li>Voor elke leverancier wordt een <strong>aparte leveranciersbestelling</strong> aangemaakt</li>
+                    <li>De oorspronkelijke bestellingen worden <strong>vergrendeld</strong> om dubbele verwerking te voorkomen</li>
+                    <li>Leveranciers ontvangen een <strong>e-mail</strong> met hun orderoverzicht</li>
+                </ol>
+                <p>Zo hoeft u niet handmatig uit te zoeken welke producten bij welke leverancier besteld moeten worden.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Welke bulk-acties kan ik uitvoeren op bestellingen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Selecteer meerdere bestellingen en kies uit de volgende acties:</p>
+                <ul>
+                    <li><strong>Pakbonnen aanmaken</strong> &mdash; Genereer pickorders voor het magazijn</li>
+                    <li><strong>Bestellijst aanmaken</strong> &mdash; Maak leveranciersbestellingen aan, gesplitst per leverancier</li>
+                    <li><strong>Status wijzigen</strong> &mdash; Verander de orderstatus van meerdere bestellingen tegelijk</li>
+                    <li><strong>Goedkeuren/Afwijzen</strong> &mdash; Bestellingen in bulk goed- of afkeuren</li>
+                    <li><strong>Exporteren</strong> &mdash; Exporteer naar Exact Online, Wex of andere systemen</li>
+                </ul>
+                <p>Het systeem houdt per bestelling bij of deze al is ge&euml;xporteerd om <strong>dubbele exports</strong> te voorkomen. U kunt ervoor kiezen om reeds ge&euml;xporteerde bestellingen al dan niet opnieuw mee te nemen.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe verstuur ik facturen per e-mail naar klanten?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Bij elke factuur kunt u op het <strong>e-mail icoontje</strong> klikken om deze te versturen:</p>
+                <ol>
+                    <li>Het systeem toont een vooringevuld e-mailbericht met placeholders (%naam%, %adres%, etc.)</li>
+                    <li>Het e-mailadres wordt automatisch ingevuld (factuur-e-mail van de klant of e-mail van de besteller)</li>
+                    <li>U kunt het bericht en de ontvanger <strong>aanpassen</strong> voordat u verzendt</li>
+                    <li>De factuur wordt als <strong>PDF-bijlage</strong> meegestuurd</li>
+                </ol>
+                <p>Hetzelfde geldt voor het versturen van <strong>offertes</strong> per e-mail.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: PUNTENSYSTEEM & BUDGETBEHEER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="manager">
+        <div class="section-header">
+            <div class="section-icon green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h2>Puntensysteem &amp; Budgetbeheer</h2>
+            <span class="badge badge-manager">Managers</span>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe ken ik punten toe aan medewerkers?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Puntentoekenning wordt beheerd via het admin-paneel. U kunt:</p>
+                <ul>
+                    <li>Per medewerker een <strong>puntentegoed</strong> instellen</li>
+                    <li>De <strong>puntenhistorie</strong> inzien met alle mutaties (toekenningen, bestedingen, correcties)</li>
+                    <li>De <strong>puntratio</strong> instellen (hoeveel een punt waard is in euro's)</li>
+                    <li>Instellen of medewerkers een <strong>negatief saldo</strong> mogen opbouwen</li>
+                </ul>
+                <div class="highlight">Het puntensysteem geeft u volledige controle over het kledingbudget per medewerker, zonder dat u elke bestelling handmatig hoeft goed te keuren.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Kunnen medewerkers zelf extra punten kopen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Als u dit inschakelt in de webshopinstellingen, kunnen medewerkers via een speciale <strong>"Punten kopen"</strong> pagina extra punten bijkopen. De betaling verloopt veilig via <strong>Mollie</strong> (iDEAL, creditcard, etc.). De gekochte punten worden direct aan het saldo toegevoegd.</p>
+                <p>Deze functie is optioneel en kan per webshop worden in- of uitgeschakeld.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe wordt de puntratio berekend en wat betekent het?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De puntratio bepaalt hoeveel <strong>&eacute;&eacute;n punt waard is in euro's</strong>:</p>
+                <ul>
+                    <li>Standaard is de ratio <strong>100 eurocent = 1 punt</strong>, wat betekent dat 1 punt gelijk is aan &euro;1,00</li>
+                    <li>U kunt de ratio aanpassen per webshop. Bijvoorbeeld: een ratio van 50 betekent dat 1 punt = &euro;0,50</li>
+                    <li>Productprijzen worden automatisch omgerekend naar punten op basis van deze ratio</li>
+                </ul>
+                <p>De puntratio wordt ook opgeslagen bij elke bestelling, zodat historische bestellingen altijd correct zijn, ook als de ratio later wijzigt.</p>
+                <div class="highlight">Bij het weergeven worden punten afgerond op hele getallen. Het subtotaal wordt eveneens afgerond, zodat medewerkers altijd met hele punten werken.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="manager">
+            <button class="faq-question">
+                <span>Hoe stel ik in of medewerkers een negatief puntensaldo mogen hebben?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Dit wordt per webshop ingesteld via de optie <strong>"Negatief saldo toestaan"</strong>:</p>
+                <ul>
+                    <li><strong>Uitgeschakeld (standaard)</strong> &mdash; Medewerkers kunnen niet bestellen als ze onvoldoende punten hebben. Bij het afrekenen krijgen ze een melding hoeveel punten ze tekortkomen, met een link om punten bij te kopen</li>
+                    <li><strong>Ingeschakeld</strong> &mdash; Medewerkers mogen bestellingen plaatsen die hun saldo overschrijden. Het saldo wordt negatief en kan later worden aangevuld</li>
+                </ul>
+                <p>Dit is handig voor organisaties die flexibiliteit willen bieden, bijvoorbeeld wanneer punten periodiek worden aangevuld.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: INTEGRATIES & KOPPELINGEN -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="technisch">
+        <div class="section-header">
+            <div class="section-icon info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h2>Integraties &amp; Koppelingen</h2>
+            <span class="badge badge-all">Technisch</span>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Welke externe systemen zijn gekoppeld aan Texodata KMS?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Texodata KMS integreert met diverse systemen:</p>
+                <ul>
+                    <li><strong>PromiData</strong> &mdash; Automatische productimport vanuit leverancierscatalogi</li>
+                    <li><strong>Mollie</strong> &mdash; Veilige online betalingen (iDEAL, creditcard, Bancontact, etc.)</li>
+                    <li><strong>Exact Online</strong> &mdash; Boekhoudkoppeling voor orders en facturen</li>
+                    <li><strong>Wex</strong> &mdash; Orderverwerking en -export</li>
+                    <li><strong>DGE</strong> &mdash; ERP-systeem synchronisatie</li>
+                    <li><strong>VIES</strong> &mdash; Europese BTW-nummervalidatie voor B2B-transacties</li>
+                    <li><strong>AWS S3</strong> &mdash; Veilige cloudopslag voor productafbeeldingen</li>
+                    <li><strong>Mailgun</strong> &mdash; Betrouwbare e-mailbezorging voor notificaties en documenten</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe veilig is het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Beveiliging heeft de hoogste prioriteit. Het systeem bevat:</p>
+                <ul>
+                    <li><strong>Rolgebaseerde toegangscontrole</strong> &mdash; Gebruikers zien alleen wat relevant is voor hun rol</li>
+                    <li><strong>API-tokenverificatie</strong> &mdash; Beveiligde communicatie tussen systemen</li>
+                    <li><strong>Rate limiting</strong> &mdash; Bescherming tegen ongewenste aanvallen op inlogpagina's</li>
+                    <li><strong>Gescheiden databases</strong> &mdash; Productdata wordt apart van klantdata opgeslagen</li>
+                    <li><strong>Versleutelde sessies</strong> &mdash; Veilige sessieafhandeling via Redis</li>
+                    <li><strong>Foutmonitoring</strong> &mdash; Real-time foutdetectie via Sentry met directe meldingen</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe worden productafbeeldingen opgeslagen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Productafbeeldingen worden veilig opgeslagen in <strong>Amazon S3</strong> (cloudopslag). Dit garandeert:</p>
+                <ul>
+                    <li>Hoge beschikbaarheid en snelle laadtijden</li>
+                    <li>Automatische back-ups</li>
+                    <li>Schaalbare opslag zonder beperkingen</li>
+                    <li>Ondersteuning voor aangepaste afbeeldingen per webshop</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Worden achtergrondprocessen automatisch uitgevoerd?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Het systeem maakt gebruik van een geavanceerd wachtrijsysteem (Laravel Horizon) voor achtergrondverwerking:</p>
+                <ul>
+                    <li><strong>Productimports</strong> &mdash; Worden automatisch op de achtergrond verwerkt zonder het systeem te vertragen</li>
+                    <li><strong>E-mailnotificaties</strong> &mdash; Worden asynchroon verstuurd voor optimale systeemprestaties</li>
+                    <li><strong>Geplande taken</strong> &mdash; Cronjobs voor periodieke synchronisaties en rapportages</li>
+                    <li><strong>Monitoring</strong> &mdash; Alle achtergrondprocessen worden gemonitord met statusmeldingen bij fouten</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe werkt de Mollie-betalingsintegratie?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Mollie is de betaalserviceprovider (PSP) die wordt gebruikt voor online betalingen:</p>
+                <ul>
+                    <li><strong>Ondersteunde methoden</strong> &mdash; iDEAL, creditcard, Bancontact en meer</li>
+                    <li><strong>Werking</strong> &mdash; Bij het afrekenen of bijkopen van punten wordt de gebruiker doorgestuurd naar de beveiligde Mollie-betaalopagina</li>
+                    <li><strong>Webhook</strong> &mdash; Na betaling ontvangt het systeem automatisch een statusmelding (betaald, geannuleerd, verlopen, mislukt)</li>
+                    <li><strong>Dubbele betalingen</strong> &mdash; Het systeem controleert de betalingsstatus om dubbele verwerking te voorkomen</li>
+                </ul>
+                <p>Elke webshop heeft een eigen Mollie API-sleutel. Punten bijkopen is alleen beschikbaar als de API-sleutel is geconfigureerd.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe werkt de PromiData-leverancierskoppeling?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>PromiData is de primaire leverancierskoppeling voor productdata:</p>
+                <ul>
+                    <li><strong>Formaat</strong> &mdash; JSON-feeds die dagelijks automatisch worden geïmporteerd</li>
+                    <li><strong>Gesynchroniseerde data</strong> &mdash; SKU, EAN, merknaam, prijzen, BTW-codes, beschrijvingen, afbeeldingen, maten, kleuren en materialen</li>
+                    <li><strong>Meertalig</strong> &mdash; Productinformatie wordt per taal opgehaald en opgeslagen</li>
+                    <li><strong>Variaties</strong> &mdash; Ouder-kind relaties worden automatisch herkend en aangemaakt</li>
+                    <li><strong>Planning</strong> &mdash; Imports worden dagelijks automatisch uitgevoerd en gelogd</li>
+                </ul>
+                <p>Na import naar de leveranciersdatabase kunt u producten selectief overnemen in uw eigen catalogus.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Worden er automatisch back-ups gemaakt?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Het systeem voert automatisch de volgende back-up taken uit:</p>
+                <ul>
+                    <li><strong>Dagelijkse back-up</strong> &mdash; Elke dag om 07:20 uur wordt een volledige back-up gemaakt</li>
+                    <li><strong>Wekelijkse opruiming</strong> &mdash; Oude back-ups worden wekelijks automatisch opgeruimd</li>
+                    <li><strong>Back-up monitoring</strong> &mdash; Wekelijks wordt gecontroleerd of de back-ups succesvol zijn uitgevoerd</li>
+                </ul>
+                <p>Productafbeeldingen worden apart opgeslagen in Amazon S3 met eigen redundantie en beschikbaarheidsgaranties.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Kan ik het systeem gebruiken op mijn telefoon of tablet?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> De webshop is volledig <strong>responsive</strong> en werkt op alle apparaten:</p>
+                <ul>
+                    <li><strong>Desktop</strong> &mdash; Chrome, Firefox, Safari, Edge</li>
+                    <li><strong>Tablet</strong> &mdash; iPad, Android-tablets</li>
+                    <li><strong>Mobiel</strong> &mdash; iPhone (Safari), Android (Chrome)</li>
+                </ul>
+                <p>Op mobiele apparaten past de interface zich automatisch aan met een hamburgermenu voor navigatie en geoptimaliseerde product- en checkoutpagina's.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: ROLLEN & TOEGANG -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="algemeen">
+        <div class="section-header">
+            <div class="section-icon dark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h2>Rollen &amp; Toegang</h2>
+            <span class="badge badge-all">Alle gebruikers</span>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Welke gebruikersrollen bestaan er in het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het systeem kent de volgende rollen, elk met eigen rechten:</p>
+                <ul>
+                    <li><strong>Distributeur Manager</strong> &mdash; Volledige toegang tot klanten, producten, bestellingen, facturatie en alle configuraties</li>
+                    <li><strong>Klantmanager</strong> &mdash; Beheert locaties, afdelingen, functies en medewerkers binnen de eigen klantorganisatie. Kan bestellingen goedkeuren</li>
+                    <li><strong>Multi-locatiemanager</strong> &mdash; Beheert meerdere vestigingen en hun afdelingen</li>
+                    <li><strong>Locatiemanager</strong> &mdash; Beheert &eacute;&eacute;n vestiging met alle onderliggende afdelingen en medewerkers</li>
+                    <li><strong>Multi-afdelingsmanager</strong> &mdash; Beheert meerdere afdelingen</li>
+                    <li><strong>Afdelingsmanager</strong> &mdash; Beheert &eacute;&eacute;n afdeling en de medewerkers daarin</li>
+                    <li><strong>Drager/Medewerker</strong> &mdash; Kan inloggen in de webshop om kleding te bestellen</li>
+                </ul>
+                <p>Elke rol ziet alleen de gegevens die relevant zijn voor zijn of haar niveau. Een afdelingsmanager ziet bijvoorbeeld alleen de medewerkers en bestellingen van zijn eigen afdeling.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Wat kan ik doen als klantmanager?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Als klantmanager heeft u toegang tot:</p>
+                <ul>
+                    <li><strong>Organisatiebeheer</strong> &mdash; Locaties, afdelingen, functies en medewerkers aanmaken en beheren</li>
+                    <li><strong>Rollenbeheer</strong> &mdash; Andere managers aanstellen en rollen toewijzen</li>
+                    <li><strong>Bestellingen goedkeuren</strong> &mdash; Bestellingen van medewerkers goed- of afkeuren</li>
+                    <li><strong>Inzicht</strong> &mdash; Bestellingen, kosten en BTW-informatie bekijken</li>
+                    <li><strong>Webshop inzien</strong> &mdash; De webshop bekijken (maar niet wijzigen)</li>
+                    <li><strong>Importhistorie</strong> &mdash; Status van medewerkerimports bekijken</li>
+                </ul>
+                <div class="highlight">Als klantmanager kunt u ook bestellen namens medewerkers in de webshop, door een medewerker te selecteren in het filtermenu.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Wat kan ik doen als locatie- of afdelingsmanager?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Locatiemanager:</strong></p>
+                <ul>
+                    <li>Afdelingen binnen uw locatie beheren</li>
+                    <li>Functies en medewerkers beheren</li>
+                    <li>Bestellingen voor uw locatie goedkeuren</li>
+                    <li>Bestellingen en kosten inzien</li>
+                </ul>
+                <p><strong>Afdelingsmanager:</strong></p>
+                <ul>
+                    <li>Functies en medewerkers binnen uw afdeling beheren</li>
+                    <li>Bestellingen voor uw afdeling goedkeuren</li>
+                    <li>Bestellingen inzien</li>
+                </ul>
+                <p>Beide rollen kunnen bestellen namens medewerkers in de webshop en zijn beperkt tot hun eigen organisatieniveau.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Waar vind ik mijn bestelhistorie als manager?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>De webshop toont alleen de bestelhistorie van <strong>medewerkers</strong> (dragers). Als manager vindt u uw eigen bestelhistorie en die van uw team in het <strong>beheerpaneel</strong> (admin-omgeving).</p>
+                <p>In de webshop wordt een melding getoond die u verwijst naar het beheerpaneel voor uw volledige managerbestelhistorie.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: BTW & FINANCIEEL -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="technisch">
+        <div class="section-header">
+            <div class="section-icon red">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h2>BTW &amp; Financieel</h2>
+            <span class="badge badge-all">Technisch</span>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe werkt de BTW-berekening in het systeem?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Elk product heeft een <strong>BTW-klasse</strong> die bepaalt welk tarief wordt toegepast:</p>
+                <ul>
+                    <li><strong>Hoog tarief</strong> (standaard 21%) &mdash; Voor de meeste kledingproducten</li>
+                    <li><strong>Laag tarief</strong> (standaard 9%) &mdash; Voor producten die onder het verlaagde tarief vallen</li>
+                    <li><strong>Nultarief</strong> (0%) &mdash; Voor vrijgestelde producten</li>
+                </ul>
+                <p>De BTW wordt <strong>per orderregel</strong> berekend en vervolgens opgeteld tot het totale BTW-bedrag van de bestelling. Alle prijzen worden exclusief BTW weergegeven, met de BTW apart vermeld.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Wat is BTW-verlegging en wanneer wordt het automatisch toegepast?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>BTW-verlegging (VAT shifting/reverse charge) wordt automatisch toegepast bij <strong>internationale B2B-transacties</strong> binnen de EU:</p>
+                <ul>
+                    <li>Wanneer een klant een geldig <strong>BTW-nummer</strong> heeft (langer dan 5 tekens)</li>
+                    <li>Het systeem valideert het BTW-nummer automatisch via het <strong>VIES-systeem</strong> (Europese BTW-validatie)</li>
+                    <li>Bij geldige verlegging worden alle BTW-tarieven op <strong>0%</strong> gezet</li>
+                    <li>Op facturen wordt vermeld dat de BTW is verlegd naar de afnemer</li>
+                </ul>
+                <div class="highlight">Dit is volledig geautomatiseerd. U hoeft alleen het BTW-nummer van de klant correct in te voeren bij het aanmaken van de klant.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Worden prijzen inclusief of exclusief BTW getoond?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Prijzen worden standaard <strong>exclusief BTW</strong> getoond. Op de productdetailpagina ziet u apart:</p>
+                <ul>
+                    <li>De prijs exclusief BTW</li>
+                    <li>Het BTW-bedrag</li>
+                    <li>Het BTW-tarief (percentage)</li>
+                </ul>
+                <p>Bij het afrekenen worden producttotalen, kosten (verzending) en het eindtotaal duidelijk uitgesplitst. Bij het bijkopen van punten wordt de prijs <strong>inclusief 21% BTW</strong> getoond.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="technisch">
+            <button class="faq-question">
+                <span>Hoe werkt de BTW-berekening op verzendkosten?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Het BTW-tarief op verzendkosten is <strong>variabel</strong> en gelijk aan het <strong>hoogste BTW-tarief</strong> van de producten in de bestelling. Bevat uw bestelling uitsluitend producten met 9% BTW, dan geldt 9% BTW op de verzendkosten. Bevat de bestelling ook producten met 21% BTW, dan geldt 21% op de verzendkosten.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: MODIFICATIES & MAATWERK -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="distributeur">
+        <div class="section-header">
+            <div class="section-icon blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h2>Modificaties &amp; Maatwerk</h2>
+            <span class="badge badge-distributor">Distributeurs</span>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe maak ik een modificatie (borduurwerk/bedrukking) aan?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Een modificatie bestaat uit drie componenten die u combineert:</p>
+                <ul>
+                    <li><strong>Soort</strong> &mdash; Het type aanpassing (bijv. borduurwerk, bedrukking, transfer)</li>
+                    <li><strong>Formaat</strong> &mdash; De afmetingen van de aanpassing</li>
+                    <li><strong>Kleur</strong> &mdash; De kleuropties voor de aanpassing</li>
+                </ul>
+                <p>Bij het aanmaken stelt u in:</p>
+                <ul>
+                    <li><strong>Naam</strong> &mdash; Herkenbare naam voor de modificatie</li>
+                    <li><strong>Inkoopprijs</strong> &mdash; Uw kostprijs</li>
+                    <li><strong>Verkoopprijs</strong> &mdash; De prijs die bij de klant in rekening wordt gebracht</li>
+                    <li><strong>Voorraad</strong> &mdash; Beschikbare hoeveelheid</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Hoe voeg ik modificaties toe aan een bestelling?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Bij het aanmaken of bewerken van een bestelling kunt u per product modificaties toevoegen:</p>
+                <ol>
+                    <li>Selecteer het product in de bestelling</li>
+                    <li>Kies een <strong>modificatie</strong> uit de lijst</li>
+                    <li>Geef de <strong>plaatsing</strong> aan (bijv. "linkerborstzak", "rug", "mouwband")</li>
+                    <li>Geef het <strong>aantal</strong> op</li>
+                </ol>
+                <p>De modificatieprijs wordt automatisch vermenigvuldigd met het aantal en bij de bestelling opgeteld. Modificaties worden meegenomen op <strong>pickorders</strong> en <strong>facturen</strong> als aparte regelposten.</p>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="distributeur">
+            <button class="faq-question">
+                <span>Verschijnen modificaties op facturen en pakbonnen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p><strong>Ja.</strong> Modificaties worden automatisch meegenomen in het hele documenttraject:</p>
+                <ul>
+                    <li><strong>Bestelling</strong> &mdash; Opgeslagen als order-item-modificaties</li>
+                    <li><strong>Pickorder (pakbon)</strong> &mdash; Gekopieerd naar pickorder-modificaties, inclusief plaatsingsinformatie voor het magazijn</li>
+                    <li><strong>Factuur</strong> &mdash; Gekopieerd naar factuur-modificaties als aparte regelpost met eigen prijs en BTW</li>
+                </ul>
+                <p>Op elk document worden de naam, soort, formaat, kleur, prijs en plaatsing van de modificatie vermeld.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTIE: WAAROM TEXODATA KMS -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="faq-section" data-category="algemeen">
+        <div class="section-header">
+            <div class="section-icon blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h2>Waarom Texodata KMS inzetten voor uw klanten?</h2>
+            <span class="badge badge-distributor">Distributeurs</span>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Wat maakt Texodata KMS uniek ten opzichte van andere oplossingen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Texodata KMS onderscheidt zich door:</p>
+                <ul>
+                    <li><strong>Multi-tenant architectuur</strong> &mdash; Beheer al uw klanten vanuit &eacute;&eacute;n platform, elk met een eigen gebrande webshop</li>
+                    <li><strong>Diepgaande organisatiestructuur</strong> &mdash; Niet alleen "klant &rarr; medewerker", maar locatie, afdeling, functie en individueel niveau</li>
+                    <li><strong>Flexibel puntensysteem</strong> &mdash; Compleet budgetbeheer zonder complex financieel administratiewerk</li>
+                    <li><strong>Productmodificaties</strong> &mdash; Borduurwerk, bedrukking en andere aanpassingen direct in het bestelproces</li>
+                    <li><strong>Uitgebreide integraties</strong> &mdash; Naadloze koppelingen met leveranciers, betaalproviders en boekhoudsystemen</li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Hoe helpt het platform mij om klanten beter te bedienen?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Met Texodata KMS biedt u uw klanten:</p>
+                <ul>
+                    <li><strong>Een eigen branded webshop</strong> &mdash; Professioneel en herkenbaar voor de eindgebruiker</li>
+                    <li><strong>Zelfservice voor medewerkers</strong> &mdash; Minder telefonisch contact en e-mail, minder fouten in bestellingen</li>
+                    <li><strong>Budgetcontrole</strong> &mdash; Klanten houden grip op uitgaven dankzij het puntensysteem</li>
+                    <li><strong>Automatische productcatalogus</strong> &mdash; Altijd actuele producten door leverancierskoppelingen</li>
+                    <li><strong>Professionele documenten</strong> &mdash; Offertes en facturen met klantbranding</li>
+                </ul>
+                <div class="highlight green">Het resultaat: tevreden klanten die sneller bestellen, minder fouten maken en precies krijgen wat ze nodig hebben.</div>
+            </div></div>
+        </div>
+
+        <div class="faq-item" data-category="algemeen">
+            <button class="faq-question">
+                <span>Voor welke sectoren is het platform geschikt?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                <p>Texodata KMS is geschikt voor elke sector waar bedrijfskleding of werkkleding wordt ingezet:</p>
+                <ul>
+                    <li><strong>Gezondheidszorg</strong> &mdash; Ziekenhuizen, klinieken, tandartspraktijken</li>
+                    <li><strong>Horeca &amp; hospitality</strong> &mdash; Hotels, restaurants, cateringbedrijven</li>
+                    <li><strong>Industrie &amp; bouw</strong> &mdash; Werkkleding en veiligheidskleding</li>
+                    <li><strong>Retail</strong> &mdash; Winkelketens met uniforme kleding</li>
+                    <li><strong>Zakelijke dienstverlening</strong> &mdash; Kantoorkleding en representatieve kleding</li>
+                    <li><strong>Overheid &amp; onderwijs</strong> &mdash; Uniformen en dienstkleding</li>
+                </ul>
+                <p>De flexibele organisatiestructuur past zich aan elke organisatievorm aan.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results" id="noResults">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+        <p><strong>Geen resultaten gevonden</strong></p>
+        <p>Probeer een andere zoekterm of bekijk alle vragen.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section" id="ctaSection">
+        <h2>Staat uw vraag er niet bij?</h2>
+        <p>Neem gerust contact met ons op. Wij helpen u graag verder.</p>
+        <a href="mailto:info@texodata.nl" class="cta-button">Neem contact op</a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2026 Texodata KMS &mdash; Kleding Management Systeem. Alle rechten voorbehouden.</p>
+</footer>
+
+<script>
+(function() {
+    // ── Accordion toggle ──
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = this.closest('.faq-item');
+            var answer = item.querySelector('.faq-answer');
+            var isOpen = item.classList.contains('open');
+
+            // Close all others
+            document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            // Toggle current
+            if (isOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = null;
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+    // ── Category filter tabs ──
+    var tabs = document.querySelectorAll('.nav-tab');
+    var sections = document.querySelectorAll('.faq-section');
+    var noResults = document.getElementById('noResults');
+    var ctaSection = document.getElementById('ctaSection');
+    var searchInput = document.getElementById('searchInput');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var filter = this.getAttribute('data-filter');
+
+            // Update active tab
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            this.classList.add('active');
+
+            // Clear search
+            searchInput.value = '';
+
+            // Show/hide sections
+            var visibleCount = 0;
+            sections.forEach(function(section) {
+                var items = section.querySelectorAll('.faq-item');
+                items.forEach(function(item) {
+                    item.style.display = '';
+                });
+
+                if (filter === 'all' || section.getAttribute('data-category') === filter) {
+                    section.style.display = '';
+                    visibleCount++;
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('visible', visibleCount === 0);
+            ctaSection.style.display = visibleCount === 0 ? 'none' : '';
+        });
+    });
+
+    // ── Search ──
+    searchInput.addEventListener('input', function() {
+        var query = this.value.toLowerCase().trim();
+
+        // Reset tabs
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        if (!query) {
+            tabs[0].classList.add('active');
+        }
+
+        var totalVisible = 0;
+
+        sections.forEach(function(section) {
+            var sectionVisible = false;
+            var items = section.querySelectorAll('.faq-item');
+
+            items.forEach(function(item) {
+                if (!query) {
+                    item.style.display = '';
+                    sectionVisible = true;
+                    return;
+                }
+
+                var questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
+                var answerText = item.querySelector('.faq-answer-inner').textContent.toLowerCase();
+
+                if (questionText.indexOf(query) !== -1 || answerText.indexOf(query) !== -1) {
+                    item.style.display = '';
+                    sectionVisible = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            section.style.display = sectionVisible ? '' : 'none';
+            if (sectionVisible) totalVisible++;
+        });
+
+        noResults.classList.toggle('visible', totalVisible === 0 && query.length > 0);
+        ctaSection.style.display = (totalVisible === 0 && query.length > 0) ? 'none' : '';
+    });
+})();
+</script>
+
+</body>
+</html>

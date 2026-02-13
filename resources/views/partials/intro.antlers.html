@@ -1,48 +1,50 @@
 <section class="mt-8">
-    <div class="relative 2xl:h-[85vh] h-[125vh] w-full">
+    <div class="relative">
+
         {{ intro_image }}
         <div class="absolute inset-0">
             <img src="{{ url }}" alt="{{ alt ?? '' }}" class="object-cover w-full h-full">
-
-            <div class="absolute top-10 left-4 2xl:left-100 flex flex-col 2xl:flex-row gap-24">
-
-                <div>
-                    <h1 class="text-white text-5xl font-bold mt-10 font-teko">
-                        {{ intro_title }}
-                    </h1>
-
-                    <p class="text-white text-base font-medium mt-20 max-w-[560px]">
-                        {{ intro_subtitle }}
-                    </p>
-
-                    <div class="mt-12 space-y-2 2xl:ml-6 ml-0">
-                        {{ grid_intro_attribute }}
-                        <div class="flex gap-2 text-white mt-3">
-                            <span class="font-semibold">
-                                {{ intro_attribute_title }}
-                            </span>
-                            <span>
-                                {{ intro_attribute_subtitle }}
-                            </span>
-                        </div>
-                        {{ /grid_intro_attribute }}
-                    </div>
-                </div>
-
-                <div class="max-w-[420px] 2xl:mt-15 mt-0 2xl:ml-8 ml-0 px-2">
-                    {{ grid_intro_benefit }}
-                    <div class="text-white 2xl:mb-36 mb-4">
-                        <h3 class="font-semibold text-2xl">
-                            {{ intro_benefit_title }}
-                        </h3>
-                        <p class="text-sm mt-3">
-                            {{ intro_benefit_subtitle }}
-                        </p>
-                    </div>
-                    {{ /grid_intro_benefit }}
-                </div>
-            </div>
         </div>
         {{ /intro_image }}
+
+        <div class="relative xl:top-10 px-6 xl:px-0 flex flex-col lg:flex-row gap-12 xl:ml-85">
+            <div class="xl:max-w-[560px]">
+                <h1 class="text-white text-5xl font-bold mt-10 font-teko">
+                    {{ intro_title }}
+                </h1>
+
+                <p class="text-white text-base font-medium mt-20">
+                    {{ intro_subtitle }}
+                </p>
+
+                <div class="mt-12 space-y-2 xl:ml-6">
+                    {{ grid_intro_attribute }}
+                    <div class="flex flex-col sm:flex-row gap-2 text-white mt-3">
+                        <span class="font-semibold">
+                            {{ intro_attribute_title }}
+                        </span>
+                        <span>
+                            {{ intro_attribute_subtitle }}
+                        </span>
+                    </div>
+                    {{ /grid_intro_attribute }}
+                </div>
+            </div>
+
+            <div class="max-w-[420px] xl:ml-8">
+                {{ grid_intro_benefit }}
+                <div class="text-white xl:mb-36 mb-8">
+                    <h3 class="font-semibold text-2xl">
+                        {{ intro_benefit_title }}
+                    </h3>
+                    <p class="text-sm mt-3">
+                        {{ intro_benefit_subtitle }}
+                    </p>
+                </div>
+                {{ /grid_intro_benefit }}
+            </div>
+
+        </div>
+
     </div>
 </section>
