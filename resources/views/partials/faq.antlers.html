@@ -1,6 +1,5 @@
 <section class="container mx-auto px-4 py-12 max-w-4xl">
 
-    <!-- Zoekbalk -->
     <div class="mb-10">
         <div class="relative max-w-xl mx-auto">
             <input type="text" id="faq-search" placeholder="Zoek je vraag..."
@@ -12,29 +11,42 @@
     </div>
 
     <div class="flex flex-wrap justify-center gap-3 mb-10">
-        {{ catogory }}
-        <button class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition">{{ title }}</button>
-        {{ /catogory }}
+        <button class="category-filter px-4 py-2 bg-indigo-600 text-white rounded-full transition" data-category="all">Alle vragen</button>
+
+        {{ taxonomy:categories }}
+        <button class="category-filter px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-indigo-600 hover:text-white transition" data-category="{{ slug }}">
+            {{ title }}
+        </button>
+        {{ /taxonomy:categories }}
     </div>
 
     <div id="faq-container" class="space-y-4">
         {{ collection:faq }}
-        <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
-            <button type="button" class="faq-question w-full  flex justify-between items-center p-6 text-left"
-                    data-target="answer{{ id }}" data-arrow="arrow{{ id }}">
-                <span class="text-lg font-semibold text-gray-800">{{ question }}</span>
-                <svg id="arrow{{ id }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+             data-category="{{ categories }}{{ slug }}{{ /categories }}">
+
+            <button type="button" class="faq-question w-full flex justify-between items-center p-6 text-left" data-target="answer{{ id }}" data-arrow="arrow{{ id }}">
+
+                <span class="text-lg font-semibold text-gray-800">
+                    {{ question }}
+                </span>
+
+                <svg id="arrow{{ id }}" xmlns="http://www.w3.org/2000/svg"
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
                      class="w-6 h-6 text-indigo-600 transition-transform duration-300">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
 
             <div id="answer{{ id }}" style="display:none" class="px-6 pb-6">
                 <p class="text-gray-600">{{ answer }}</p>
             </div>
+
         </div>
         {{ /collection:faq }}
     </div>
+
 </section>
 
 <script>
@@ -49,16 +61,58 @@
         });
     });
 
+    document.querySelectorAll('.category-filter').forEach(function(button) {
+
+        button.addEventListener('click', function() {
+
+            const selected = button.dataset.category;
+
+            document.querySelectorAll('.category-filter').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+
+            button.classList.remove('bg-gray-200', 'text-gray-700');
+            button.classList.add('bg-indigo-600', 'text-white');
+
+            document.querySelectorAll('#faq-container .faq-item').forEach(function(item) {
+
+                if (selected === 'all') {
+                    item.style.display = 'block';
+                    return;
+                }
+
+                if (item.dataset.category === selected) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+
+            });
+
+        });
+    });
+
     const searchInput = document.getElementById('faq-search');
+
     searchInput.addEventListener('input', function() {
+
         const query = searchInput.value.toLowerCase();
+
         document.querySelectorAll('#faq-container .faq-item').forEach(function(item) {
+
             const question = item.querySelector('.faq-question span').textContent.toLowerCase();
-            if(question.includes(query)) {
+            const currentCategory = document.querySelector('.category-filter.bg-indigo-600').dataset.category;
+
+            const matchesSearch = question.includes(query);
+            const matchesCategory = currentCategory === 'all' || item.dataset.category === currentCategory;
+
+            if (matchesSearch && matchesCategory) {
                 item.style.display = 'block';
             } else {
                 item.style.display = 'none';
             }
+
         });
     });
 </script>
