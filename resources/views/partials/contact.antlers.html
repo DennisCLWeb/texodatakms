@@ -30,11 +30,14 @@
             {{ /if }}
 
             <div class="space-y-6">
-                <input type="text" name="name" placeholder="Naam" value="{{ old:name }}" class="w-full border border-gray-300 px-4 py-3" required>
-                <input type="email" name="email" placeholder="Email" value="{{ old:email }}"  class="w-full border border-gray-300 px-4 py-3" required>
-                <textarea name="reason" rows="3" placeholder="Waarom neem jij contact met ons op?" class="w-full border border-gray-300 px-4 py-3" required>{{ old:reason }}</textarea>
-                <textarea name="message" rows="3" placeholder="Bericht" class="w-full border border-gray-300 px-4 py-3" required>{{ old:message }}</textarea>
-                <button type="submit" class="bg-gray-800 text-white px-6 py-3">Verzenden</button>
+                <input type="text" name="name" placeholder="Naam" value="{{ old:name }}" class="w-full border px-4 py-3 {{ if error:name }} border-red-500 {{ else }} border-gray-300 {{ /if }}" required>
+                <input type="email" name="email" placeholder="Email" value="{{ old:email }}" class="w-full border px-4 py-3 {{ if error:email }} border-red-500 {{ else }} border-gray-300 {{ /if }}" required>
+                <textarea name="reason" rows="3" placeholder="Waarom neem jij contact met ons op?" class="w-full border px-4 py-3 {{ if error:reason }} border-red-500 {{ else }} border-gray-300 {{ /if }}" required>{{ old:reason }}</textarea>
+                <textarea name="message" rows="3" placeholder="Bericht" class="w-full border px-4 py-3 {{ if error:message }} border-red-500 {{ else }} border-gray-300 {{ /if }}" required>{{ old:message }}</textarea>
+
+                <button type="submit" class="bg-gray-800 text-white px-6 py-3">
+                    Verzenden
+                </button>
             </div>
 
             {{ /form:contact_us }}

@@ -5,7 +5,6 @@ return [
     'unique_entry_value' => 'The :attribute has already been taken.',
     'unique_user_value' => 'The :attribute has already been taken.',
     'required' => ':attribute is verplicht.',
-    'alpha' => ':attribute mag alleen letters bevatten.',
     'email' => ':attribute is ongeldig.',
     'max.string' => ':attribute is te lang.',
     'min.string' => ':attribute is te kort.',
